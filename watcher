@@ -7,6 +7,7 @@ last_updated=''
 while true; do
 	most_recent="$(ls -t $input_path | head -1)"
 	if [ "$most_recent" != "$last_updated" ]; then
+		last_updated="$most_recent"
 		date
 		echo "Running script"
 		./main.py > output.txt
