@@ -115,7 +115,7 @@ def main() -> int:
 	if not os.path.isdir(output_path):
 		print(f'output_path = "{output_path}" not valid directory')
 		return 1
-	return generate_progress_photo(input_path, output_path) or generate_progress_gif(input_path, output_path)
+	return generate_progress_photo(input_path, output_path) # or generate_progress_gif(input_path, output_path)
 
 if __name__ == '__main__':
 	exit(main())
