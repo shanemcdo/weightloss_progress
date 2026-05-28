@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. venv/bin/activate
+input_path="$(grep INPUT_PATH .env | awk -F= '{ print $2 }')"
+input_path="${input_path/\$\{HOME\}/$HOME}"
+last_updated=''
+while true; do
+	most_recent="$(ls -t $input_path | head -1)"
+	if [ "$most_recent" != "$last_updated" ]; then
+		date
+		echo "Running script"
+		./main.py > output.txt
+	fi
+	sleep 60
+done
