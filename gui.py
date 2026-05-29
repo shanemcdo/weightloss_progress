@@ -16,7 +16,7 @@ def run_gui(input_path: str, extension: str = 'JPG') -> int:
 	root = tk.Tk()
 	root.title('Weight Loss Progress')
 	files = [
-		get_img_tk(os.path.join(input_path, file), file[:8])
+		get_img_tk(input_path, file)
 		for file in sorted(os.listdir(input_path))
 		if file.endswith('.' + extension)
 	]
