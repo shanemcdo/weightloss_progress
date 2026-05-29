@@ -11,6 +11,7 @@ while true; do
 		date
 		echo "Running script"
 		./main.py > output.txt
+		echo "done"
 	fi
 	sleep 60
 done
