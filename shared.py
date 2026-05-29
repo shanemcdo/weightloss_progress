@@ -28,17 +28,17 @@ def getenv_mandatory(key: str) -> str:
 		exit(1)
 	return result
 
-def get_img(path: str, label: str) -> Image.Image:
+def get_img(dir_path: str, filename: str) -> Image.Image:
 	'''
 	Get image and add label to top left
-	:path: path to image to open
-	:label: label to add to top left of image
+	:dir_path: path to directory where image is
+	:filename: name of image to open
 	'''
-	img = Image.open(path)
+	img = Image.open(os.path.join(dir_path, filename))
 	img = img.transpose(Image.Transpose.ROTATE_270) # for some reason iphone photos need to be rotated
 	font = ImageFont.load_default(150)
 	draw = ImageDraw.Draw(img)
-	draw.text((10, 10), label, 0, font)
+	draw.text((10, 10), filename, 0, font)
 	return img
 
 

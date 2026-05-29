@@ -21,8 +21,8 @@ def generate_progress_photo(input_path: str, output_path: str, extension: str = 
 	newest_date = newest_name[:8]
 	output_name = f'{oldest_date}to{newest_date}.{extension}'
 	output_fullpath = os.path.join(output_path, output_name)
-	oldest_img = get_img(os.path.join(input_path, oldest_name), oldest_date)
-	newest_img = get_img(os.path.join(input_path, newest_name), newest_date)
+	oldest_img = get_img(input_path, oldest_name)
+	newest_img = get_img(input_path, newest_name)
 	assert oldest_img.mode == newest_img.mode
 	assert oldest_img.height == newest_img.height
 	output_img = Image.new(oldest_img.mode, (oldest_img.width * 2, oldest_img.height))
@@ -47,7 +47,7 @@ def generate_progress_gif(input_path: str, output_path: str, extension: str = 'J
 	newest_date = newest_name[:8]
 	output_name = f'{oldest_date}to{newest_date}.gif'
 	output_fullpath = os.path.join(output_path, output_name)
-	imgs = [ get_img(os.path.join(input_path, file), file[:8]) for file in sorted(os.listdir(input_path)) if file.endswith('.' + extension) ]
+	imgs = [ get_img(input_path, file) for file in sorted(os.listdir(input_path)) if file.endswith('.' + extension) ]
 	if len(imgs) == 0:
 		print(f'No images found in "{input_path}" for gif')
 		return 1

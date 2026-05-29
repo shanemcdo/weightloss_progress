@@ -3,12 +3,12 @@
 import dotenv
 import os
 import tkinter as tk
-from shared import getenv_mandatory, get_img, find_oldest_photo
+from shared import getenv_mandatory, get_img
 from PIL import ImageTk
 
-def get_img_tk(path: str, label: str, scale: int = 8) -> ImageTk.PhotoImage:
-	print(f'Loading "{path}"')
-	img = get_img(path, label)
+def get_img_tk(dir_path: str, filename: str, scale: int = 8) -> ImageTk.PhotoImage:
+	print(f'Loading "{filename}"')
+	img = get_img(dir_path, filename)
 	img = img.resize((img.width // scale, img.height // scale))
 	return ImageTk.PhotoImage(img)
 
